@@ -1,0 +1,44 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(180, 179, 179, 0.295);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.loader-wrapper {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+
+}
+.loader {
+  width: 100%;
+  height: 100%;
+  border: 5px solid #fcfafa1e;
+  border-top-color: #84dfb9;
+  border-bottom-color: #7e87ff;
+  border-radius: 50%;
+  animation: rotate 5s linear infinite;
+  animation-duration: 6s;
+}
+.loader-inner { 
+  border-top-color: #84dfb9;
+  border-bottom-color: #7e87ff;
+  animation-duration: 3.5s;
+}
+@keyframes rotate {
+  0% {
+      transform: scale(1) rotate(360deg);
+  }
+  50% {
+      transform: scale(.8) rotate(-360deg);
+  }
+  100% {
+      transform: scale(1) rotate(360deg);
+  }
+}

@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h3>Signup</h3>
+                    <h6>Enter your details</h6>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Usename</label>
+                        <input type="text" class="form-control" id="username" formControlName="username" [ngClass]="{ 'is-invalid': (f.username.touched || submitted ) && f.username.errors} ">
+                        <span class="text-danger" *ngIf="(f.username.touched || submitted) && f.username.errors">
+                            <span *ngIf="(f.username.touched || submitted) && f.username.errors?.required">Usename is required</span>
+                            <span *ngIf="(f.username.touched || submitted) && f.username.errors?.maxlength">Username must be at least 4 characters</span>
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{ 'is-invalid': (f.email.touched || submitted) && f.email.errors}">
+                        <span class="text-danger" *ngIf="(f.email.touched || submitted) && f.email.errors">
+                            <span *ngIf="(f.email.touched || submitted) && f.email.errors?.required">Email is required</span>
+                            <span *ngIf="(f.email.touched || submitted) && f.email.errors?.email">Enter a valid email address</span>
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input [type]="inputType" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': (f.password.touched || submitted ) && f.password.errors}" />
+                            <div class="input-group-text">
+                              <input type="checkbox" class="form-check-input mt-0" (change)="showPassword($event)">
+                            </div> 
+                        </div>
+                        <span class="text-danger" *ngIf="(f.password.touched || submitted) && f.password.errors">
+                            <span *ngIf="(f.password.touched || submitted) && f.password.errors?.required">Password is required</span>
+                            <span *ngIf="(f.password.touched || submitted) && f.password.errors?.invalidPassword">
+                                Password should have minimum 8 characters least 1 uppercase letter, 1 lowercase letter, 1 spesial character, and 1 number
+                            </span>
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm Password</label>
+                        <input [type]="inputType" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': (f.confirmpassword.touched || submitted ) && f.confirmpassword.errors}" />
+                        <span class="text-danger" *ngIf="(f.confirmpassword.touched || submitted) && f.confirmpassword.errors">
+                            <span *ngIf="(f.confirmpassword.touched || submitted) && f.confirmpassword.errors?.required">Confirm confirmpassword is required</span>
+                            <span *ngIf="(f.confirmpassword.touched || submitted) && f.confirmpassword.errors?.passwordMismatch">Passwords doesnot match</span>
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-lg-between position-relative mb-2">
+                        <button type="submit" class="btn btn-light btn-sm rounded-pill w-25" [disabled]="form.invalid">Submit</button>
+                        <small class="regular-10  position-absolute top-50 end-0 translate-middle-y">Already an account ?<span class="createaccount" role="button" routerLink="/login"> Login</span></small> 
+                    </div>
+                    <div *ngIf="error" class="text-danger mt-3 mb-0">{{error}}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
